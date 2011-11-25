@@ -38,6 +38,8 @@ projects[entity][subdir] = contrib
 projects[feeds][subdir] = contrib
 projects[feeds][version] = 2.0-alpha4
 projects[features][subdir] = contrib
+projects[job_scheduler][version] = 2.0-alpha2
+projects[job_scheduler][subdir] = contrib
 projects[l10n_update][subdir] = contrib 
 projects[libraries][subdir] = contrib
 projects[logintoboggan][subdir] = contrib
@@ -95,5 +97,5 @@ projects[simplified_modules][version] = 1.0-beta1
 ; Themes
 ;;;;;;;;;
 
-projects[singular][type] = "theme"
 projects[tao][type] = "theme"
+projects[rubik][type] = "theme"

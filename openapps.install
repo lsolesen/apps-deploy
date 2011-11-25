@@ -9,7 +9,7 @@ require dirname(__FILE__) . '/../standard/standard.install';
 function openapps_install() {
   standard_install();
 
-  $theme = 'singular';
+  $theme = 'cube';
 
   db_update('system')
     ->fields(array('status' => 1))
