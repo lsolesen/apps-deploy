@@ -6,18 +6,18 @@ require dirname(__FILE__) . '/../standard/standard.install';
  *
  * Perform actions to set up the site for this profile.
  */
-function vih_dk_install() {
+function openapps_install() {
   standard_install();
 
-  $theme = 'sport';
+  $theme = 'singular';
 
   db_update('system')
     ->fields(array('status' => 1))
     ->condition('type', 'theme')
-    ->condition('name', 'sport')
+    ->condition('name', $theme)
     ->execute();
   variable_set('theme_default', $theme);
-
+  /*
   $values = array(
     array(
       'module' => 'system',
@@ -230,6 +230,7 @@ function _vih_dk_configure_wysiwyg() {
       'settings' => serialize($wysiwyg_setting),
     ))
     ->execute();  
+  */
 }
 
 function _vih_dk_configure_formatters() {

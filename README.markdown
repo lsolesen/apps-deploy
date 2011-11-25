@@ -1,4 +1,4 @@
-Drupal Apps Server
+Drupal Open Apps Server
 ==
 
 This makes it possible to easily deploy an apps server
@@ -14,7 +14,7 @@ Installation
 
 To build a complete site, run:
 
-    drush make apps.build ~/workspace/apps
+    drush make openapps.build ~/workspace/openapps
     
 Then setup the following:
 
@@ -30,10 +30,10 @@ Navigate to the root directory in a webbrowser.
 If you want to update just the install profile instead of rebuilding the
 entire site, you can run this:
 
-    drush make --no-core --contrib-destination=. apps.make
+    drush make --no-core --contrib-destination=. openapps.make
 
 #### Rebuild everything ####
 
 If you want to force a rebuild of everything, you can run this:
 
-    drush si apps
+    drush si openapps

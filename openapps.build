@@ -1,0 +1,9 @@
+core = 7.x
+api = 2
+
+projects[drupal][type] = "core"
+
+projects[openapps][type] = "profile"
+projects[openapps][download][type] = "git"
+projects[openaps][download][url] = "git://github.com/lsolesen/apps-deploy.git"
+projects[openapps][download][branch] = "master"

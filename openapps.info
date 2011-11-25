@@ -1,0 +1,90 @@
+core = 7.x
+name = Open Apps
+description = Drupal Apps Server
+version = 7.x-0.1
+
+;;;;;;;;;;;;;
+; Core
+;;;;;;;;;;;;;
+
+dependencies[] = contextual
+dependencies[] = dblog
+dependencies[] = field_ui
+dependencies[] = file
+dependencies[] = image
+dependencies[] = list
+dependencies[] = locale
+dependencies[] = menu
+dependencies[] = number
+dependencies[] = overlay
+dependencies[] = path
+dependencies[] = taxonomy
+dependencies[] = search
+dependencies[] = shortcut
+dependencies[] = toolbar
+dependencies[] = rdf
+
+;;;;;;;;;;;;;
+; Site building tools
+;;;;;;;;;;;;;
+
+dependencies[] = ctools
+dependencies[] = entity
+dependencies[] = features
+dependencies[] = feeds
+dependencies[] = feeds_ui
+dependencies[] = libraries
+dependencies[] = strongarm
+dependencies[] = token
+dependencies[] = views
+dependencies[] = views_bulk_operations
+dependencies[] = views_slideshow
+dependencies[] = views_ui
+
+;;;;;;;;;;;;;
+; SEO Tools
+;;;;;;;;;;;;;
+
+dependencies[] = googleanalytics
+dependencies[] = metatag
+dependencies[] = xmlsitemap
+
+;;;;;;;;;;;;;
+; UI Improvements
+;;;;;;;;;;;;;
+
+dependencies[] = logintoboggan
+dependencies[] = media
+dependencies[] = media_youtube
+dependencies[] = wysiwyg
+
+;;;;;;;;;;;;;
+; Path tools
+;;;;;;;;;;;;;
+
+dependencies[] = globalredirect
+dependencies[] = pathauto
+dependencies[] = redirect
+dependencies[] = transliteration
+
+;;;;;;;;;;;;;
+; Server tools
+;;;;;;;;;;;;;
+
+dependencies[] = apps
+dependencies[] = appserver
+dependencies[] = fserver
+
+;;;;;;;;;;;;;
+; Fields
+;;;;;;;;;;;;;
+
+dependencies[] = references
+
+;;;;;;;;;;;;;
+; Contrib
+;;;;;;;;;;;;;
+
+dependencies[] = mailchimp
+
+files[] = apps_deploy.profile
