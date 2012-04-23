@@ -44,7 +44,7 @@ projects[l10n_update][subdir] = contrib
 projects[libraries][subdir] = contrib
 projects[logintoboggan][subdir] = contrib
 projects[media][subdir] = contrib
-projects[media][version] = 1.0-beta5
+projects[media][version] = 1.0
 projects[media_youtube][subdir] = contrib
 projects[menu_block][subdir] = contrib
 projects[node_clone][subdir] = contrib
@@ -86,6 +86,8 @@ projects[wysiwyg][subdir] = contrib
 ; UI Enhancements
 ;;;;;;;;;
 
+projects[views_accordeon][subdir] = contrib
+projects[views_accordeon][version] = 1.0
 projects[block_visibility][subdir] = contrib
 projects[block_visibility][version] = 1.0-beta2
 projects[simplified_menu_admin][subdir] = contrib
@@ -99,3 +101,6 @@ projects[simplified_modules][version] = 1.0-beta1
 
 projects[tao][type] = "theme"
 projects[rubik][type] = "theme"
+projects[fubik][type] = "theme"
+projects[cube][type] = "theme"
+
