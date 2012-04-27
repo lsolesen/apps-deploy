@@ -30,7 +30,7 @@ projects[transliteration][subdir] = contrib
 ;;;;;;;;;
 ; Site building tools
 ;;;;;;;;;
-
+projects[total_control][subdir] = contrib
 projects[ctools][subdir] = contrib
 projects[devel][subdir] = contrib
 projects[diff][subdir] = contrib
@@ -81,6 +81,7 @@ projects[mailchimp][subdir] = contrib
 ;;;;;;;;;
 
 projects[wysiwyg][subdir] = contrib
+projects[markdown][subdir] = contrib
 
 ;;;;;;;;;
 ; UI Enhancements
@@ -104,3 +105,6 @@ projects[rubik][type] = "theme"
 projects[fubik][type] = "theme"
 projects[cube][type] = "theme"
 
+; Libraries
+libraries[tinymce][download][type] = get
+libraries[tinymce][download][url] = http://apps.getpantheon.com/sites/all/libraries/tinymce-panopoly.tar.gz
