@@ -30,6 +30,7 @@ projects[transliteration][subdir] = contrib
 ;;;;;;;;;
 ; Site building tools
 ;;;;;;;;;
+projects[panels][subdir] = contrib
 projects[total_control][subdir] = contrib
 projects[ctools][subdir] = contrib
 projects[devel][subdir] = contrib
