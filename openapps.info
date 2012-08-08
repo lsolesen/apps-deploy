@@ -1,12 +1,13 @@
 core = 7.x
 name = Open Apps
 description = Drupal Apps Server
-version = 7.x-0.1
+version = 7.x-1.0
 
 ;;;;;;;;;;;;;
 ; Core
 ;;;;;;;;;;;;;
 
+dependencies[] = block
 dependencies[] = contextual
 dependencies[] = dblog
 dependencies[] = field_ui
@@ -57,6 +58,7 @@ dependencies[] = logintoboggan
 dependencies[] = media
 dependencies[] = media_youtube
 dependencies[] = wysiwyg
+dependencies[] = markup
 
 ;;;;;;;;;;;;;
 ; Path tools
@@ -73,7 +75,7 @@ dependencies[] = transliteration
 
 dependencies[] = apps
 dependencies[] = appserver
-dependencies[] = fserver
+
 
 ;;;;;;;;;;;;;
 ; Fields

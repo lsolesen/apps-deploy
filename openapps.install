@@ -1,28 +1,78 @@
 <?php
-require dirname(__FILE__) . '/../standard/standard.install';
+
+require_once ("profiles/standard/standard.profile");
 
 /**
- * Implements hook_install().
- *
- * Perform actions to set up the site for this profile.
- */
+* Implement hook_install().
+*
+* Perform actions to set up the site for this profile.
+*/
 function openapps_install() {
-  standard_install();
+  // pulse, reverb, impulse
 
-  $theme = 'cube';
+  // Add text formats.
+  $filtered_html_format = array(
+    'format' => 'filtered_html',
+    'name' => 'Filtered HTML',
+    'weight' => 0,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // HTML filter.
+      'filter_html' => array(
+        'weight' => 1,
+        'status' => 1,
+      ),
+      // Line break filter.
+      'filter_autop' => array(
+        'weight' => 2,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+    ),
+  );
+  $filtered_html_format = (object) $filtered_html_format;
+  filter_format_save($filtered_html_format);
 
-  db_update('system')
-    ->fields(array('status' => 1))
-    ->condition('type', 'theme')
-    ->condition('name', $theme)
-    ->execute();
-  variable_set('theme_default', $theme);
-  /*
+  $full_html_format = array(
+    'format' => 'full_html',
+    'name' => 'Full HTML',
+    'weight' => 1,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // Line break filter.
+      'filter_autop' => array(
+        'weight' => 1,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+    ),
+  );
+  $full_html_format = (object) $full_html_format;
+  filter_format_save($full_html_format);
+
+  // Enable some standard blocks.
+  $default_theme = variable_get('theme_default', 'cube');
   $values = array(
     array(
       'module' => 'system',
       'delta' => 'main',
-      'theme' => $theme,
+      'theme' => $default_theme,
       'status' => 1,
       'weight' => 0,
       'region' => 'content',
@@ -30,12 +80,32 @@ function openapps_install() {
       'cache' => -1,
     ),
     array(
+      'module' => 'user',
+      'delta' => 'login',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'sidebar_second',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
       'module' => 'system',
       'delta' => 'main-menu',
-      'theme' => $theme,
+      'theme' => $default_theme,
       'status' => 1,
-      'weight' => -10,
-      'region' => 'sidebar_first',
+      'weight' => 0,
+      'region' => 'header',
+      'pages' => '',
+      'cache' => -1,
+    ),
+      array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'help',
       'pages' => '',
       'cache' => -1,
     ),
@@ -45,248 +115,22 @@ function openapps_install() {
     $query->values($record);
   }
   $query->execute();
-    
-  // setting up the editor
-  _vih_dk_configure_wysiwyg();
-  _vih_dk_configure_formatters();
+
+  // New accounts made by administrators only.
+  variable_set('user_register', USER_REGISTER_ADMINISTRATORS_ONLY);
+
+  // Enable default permissions for system roles.
+  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content'));
+  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access content'));
+
+  // Enable themes
+  theme_enable(array('cube', 'seven'));
+  variable_set('admin_theme', 'cube');
+  variable_set('theme_default', 'cube');
+  // variable_set('site_frontpage', 'app/query');
+  // variable_set('clean_url', 1);
+  //variable_set('site_footer', 'Built with openapps');
+  // variable_set('node_admin_theme', '1');
+
 }
 
-function _vih_dk_configure_wysiwyg() {
-  //WYSIWYG Setup Filtered HTML
-  $wysiwyg_setting = array(
-    'default' => 1, 
-    'user_choose' => 0, 
-    'show_toggle' => 1, 
-    'theme' => 'advanced', 
-    'language' => 'en', 
-    'wysiwyg_buttons' => array(
-      'default' => array(
-        'Bold' => 1, 
-        'Italic' => 1, 
-        'Underline' => 0, 
-        'Strike' => 0, 
-        'JustifyLeft' => 0, 
-        'JustifyCenter' => 0, 
-        'JustifyRight' => 0, 
-        'JustifyBlock' => 0, 
-        'BulletedList' => 0, 
-        'NumberedList' => 0, 
-        'Outdent' => 0, 
-        'Indent' => 0, 
-        'Undo' => 0, 
-        'Redo' => 0, 
-        'Link' => 1, 
-        'Unlink' => 1, 
-        'Anchor' => 0, 
-        'Image' => 0, 
-        'TextColor' => 0, 
-        'BGColor' => 0, 
-        'Superscript' => 0, 
-        'Subscript' => 0, 
-        'Blockquote' => 0, 
-        'Source' => 0, 
-        'HorizontalRule' => 0, 
-        'Cut' => 0, 
-        'Copy' => 0, 
-        'Paste' => 0, 
-        'PasteText' => 0, 
-        'PasteFromWord' => 0, 
-        'ShowBlocks' => 0, 
-        'RemoveFormat' => 0, 
-        'SpecialChar' => 0, 
-        'About' => 0, 
-        'Format' => 0, 
-        'Font' => 0, 
-        'FontSize' => 0, 
-        'Styles' => 0, 
-        'Table' => 0, 
-        'Find' => 0, 
-        'Replace' => 0, 
-        'SelectAll' => 0, 
-        'Flash' => 0, 
-        'Smiley' => 0, 
-        'Maximize' => 0, 
-        'SpellChecker' => 0, 
-        'Scayt' => 0), 
-      'drupal' => array (
-        'media' => 0, 
-        'break' => 1)), 
-      'toolbar_loc' => 'top', 
-      'toolbar_align' => 'left', 
-      'path_loc' => 'bottom', 
-      'resizing' => 1, 
-      'verify_html' => 1, 
-      'preformatted' => 0, 
-      'convert_fonts_to_spans' => 1, 
-      'remove_linebreaks' => 1, 
-      'apply_source_formatting' => 0, 
-      'paste_auto_cleanup_on_paste' => 0, 
-      'block_formats' => 'p,pre,h2,h3,h4,h5,h6,div', 
-      'css_setting' => 'theme', 
-      'css_path' => '', 
-      'css_classes' => '', 
-      'buttons' => array(
-        'default' => array(
-          'Bold' => 1, 
-          'Italic' => 1,
-          'Link' => 1), 
-        'drupal' => array ('media' => 0)));
-  db_merge('wysiwyg')
-    ->key(array('format' => 'filtered_html'))
-    ->fields(array(
-      'editor' => 'ckeditor',
-      'settings' => serialize($wysiwyg_setting),
-    ))
-    ->execute();
-
-  //WYSIWYG Setup Full Html
-  $wysiwyg_setting = array(
-    'default' => 1, 
-    'user_choose' => 0, 
-    'show_toggle' => 1, 
-    'theme' => 'advanced', 
-    'language' => 'en', 
-    'wysiwyg_buttons' => array (
-      'default' => array (
-        'Bold' => 1, 
-        'Italic' => 1, 
-        'Underline' => 0, 
-        'Strike' => 0, 
-        'JustifyLeft' => 0, 
-        'JustifyCenter' => 0, 
-        'JustifyRight' => 0, 
-        'JustifyBlock' => 0, 
-        'BulletedList' => 1, 
-        'NumberedList' => 1, 
-        'Outdent' => 0, 
-        'Indent' => 0, 
-        'Undo' => 0, 
-        'Redo' => 1, 
-        'Link' => 1, 
-        'Unlink' => 1, 
-        'Anchor' => 0, 
-        'Image' => 0, 
-        'TextColor' => 0, 
-        'BGColor' => 0, 
-        'Superscript' => 0, 
-        'Subscript' => 0, 
-        'Blockquote' => 1, 
-        'Source' => 0, 
-        'HorizontalRule' => 0, 
-        'Cut' => 0, 
-        'Copy' => 0, 
-        'Paste' => 0, 
-        'PasteText' => 0, 
-        'PasteFromWord' => 0, 
-        'ShowBlocks' => 0, 
-        'RemoveFormat' => 0, 
-        'SpecialChar' => 0, 
-        'About' => 0, 
-        'Format' => 1, 
-        'Font' => 0, 
-        'FontSize' => 0, 
-        'Styles' => 0, 
-        'Table' => 0, 
-        'Find' => 0, 
-        'Replace' => 0, 
-        'SelectAll' => 0, 
-        'Flash' => 0, 
-        'Smiley' => 0, 
-        'Maximize' => 0, 
-        'SpellChecker' => 0, 
-        'Scayt' => 0), 
-      'drupal' => array (
-        'media' => 1, 
-        'break' => 1)), 
-      'toolbar_loc' => 'top', 
-      'toolbar_align' => 'left', 
-      'path_loc' => 'bottom', 
-      'resizing' => 1, 
-      'verify_html' => 1, 
-      'preformatted' => 0, 
-      'convert_fonts_to_spans' => 1, 
-      'remove_linebreaks' => 1, 
-      'apply_source_formatting' => 0, 
-      'paste_auto_cleanup_on_paste' => 0, 
-      'block_formats' => 'p,pre,h2,h3,h4,h5,h6,div', 
-      'css_setting' => 'theme', 
-      'css_path' => '', 
-      'css_classes' => '', 
-      'buttons' => array (
-        'default' => array (
-          'Format' => 1,
-          'Bold' => 1, 
-          'Italic' => 1,
-          'Link' => 1,
-          'Unlink' => 1,
-          'BulletedList' => 1, 
-          'NumberedList' => 1), 
-        'drupal' => array (
-          'media' => 1)));
-  db_merge('wysiwyg')
-    ->key(array('format' => 'full_html'))
-    ->fields(array(
-      'editor' => 'ckeditor',
-      'settings' => serialize($wysiwyg_setting),
-    ))
-    ->execute();  
-  */
-}
-
-function _vih_dk_configure_formatters() {
-  foreach (array('filtered_html', 'full_html') as $f) {
-    $format = filter_format_load($f);
-    $format->filters['media_filter'] = array(
-      'status' => 1,
-      'weight' => 10,
-    );
-    filter_format_save($format);
-  }
-}
-
-/**
- * Adds the tags field to all media bundles.
- */
-function _media_add_field_tags() {
-  foreach (media_type_get_types() as $bundle => $type) {
-    $instance = array(
-      'field_name' => 'field_tags',
-      'entity_type' => 'media',
-      'bundle' => $bundle,
-      'label' => 'Tags',
-      'widget' => array(
-        'type' => 'taxonomy_autocomplete',
-      ),
-
-      // @todo: implement this.
-      //'display' => array();
-    );
-    field_create_instance($instance);
-  }
-}
-
-/**
- * Adds a description field to all media bundles.
- * @todo: do this.
- */
-function _media_add_field_description() {
-
-  $field = array(
-    'field_name' => 'media_description',
-    'type' => 'text_long',
-    'translatable' => TRUE,
-  );
-  field_create_field($field);
-
-  foreach (media_type_get_types() as $bundle => $type) {
-    $instance = array(
-      'field_name' => 'media_description',
-      'entity_type' => 'media',
-      'bundle' => $bundle,
-      'label' => 'Description',
-      // @todo: implement this.
-      //'display' => array();
-    );
-    field_create_instance($instance);
-  }
-}
