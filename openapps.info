@@ -66,8 +66,8 @@ dependencies[] = markup
 
 dependencies[] = globalredirect
 dependencies[] = pathauto
-;dependencies[] = redirect
-;dependencies[] = transliteration
+dependencies[] = redirect
+dependencies[] = transliteration
 
 ;;;;;;;;;;;;;
 ; Server tools
@@ -87,6 +87,6 @@ dependencies[] = references
 ; Contrib
 ;;;;;;;;;;;;;
 
-;dependencies[] = mailchimp
+dependencies[] = mailchimp
 
 files[] = apps_deploy.profile
