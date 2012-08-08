@@ -86,14 +86,10 @@ projects[markdown][subdir] = contrib
 ; UI Enhancements
 ;;;;;;;;;
 
-projects[views_accordeon][subdir] = contrib
-projects[views_accordeon][version] = 1.0
+projects[views_accordion][subdir] = contrib
 projects[block_visibility][subdir] = contrib
-projects[block_visibility][version] = 1.0-beta2
 projects[simplified_menu_admin][subdir] = contrib
-projects[simplified_menu_admin][version] = 1.0-beta2
 projects[simplified_modules][subdir] = contrib
-projects[simplified_modules][version] = 1.0-beta1
 
 ;;;;;;;;;
 ; Themes
