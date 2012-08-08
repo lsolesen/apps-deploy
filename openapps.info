@@ -57,6 +57,7 @@ dependencies[] = logintoboggan
 dependencies[] = media
 dependencies[] = media_youtube
 dependencies[] = wysiwyg
+dependencies[] = markup
 
 ;;;;;;;;;;;;;
 ; Path tools

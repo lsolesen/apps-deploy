@@ -7,6 +7,7 @@ api = 2
 
 projects[nodereference_url][subdir] = contrib
 projects[references][subdir] = contrib
+projects[field_views][subdir] = contrib
 
 ;;;;;;;;;
 ; Server tools
@@ -54,6 +55,7 @@ projects[views_slideshow][subdir] = contrib
 projects[rules][subdir] = contrib
 projects[strongarm][subdir] = contrib
 projects[token][subdir] = contrib
+taxonomy_view_mode[subdir] = contrib
 
 ;;;;;;;;;
 ; Performance
@@ -90,7 +92,7 @@ projects[views_accordion][subdir] = contrib
 projects[block_visibility][subdir] = contrib
 projects[simplified_menu_admin][subdir] = contrib
 projects[simplified_modules][subdir] = contrib
-
+projects[markup][subdir] = contrib
 ;;;;;;;;;
 ; Themes
 ;;;;;;;;;
@@ -99,7 +101,3 @@ projects[tao][type] = "theme"
 projects[rubik][type] = "theme"
 projects[fubik][type] = "theme"
 projects[cube][type] = "theme"
-
-; Libraries
-libraries[tinymce][download][type] = get
-libraries[tinymce][download][url] = http://apps.getpantheon.com/sites/all/libraries/tinymce-panopoly.tar.gz
