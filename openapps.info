@@ -1,7 +1,7 @@
 core = 7.x
 name = Open Apps
 description = Drupal Apps Server
-version = 7.x-0.1
+version = 7.x-1.0
 
 ;;;;;;;;;;;;;
 ; Core

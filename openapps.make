@@ -41,11 +41,10 @@ projects[feeds][version] = 2.0-alpha4
 projects[features][subdir] = contrib
 projects[job_scheduler][version] = 2.0-alpha2
 projects[job_scheduler][subdir] = contrib
-projects[l10n_update][subdir] = contrib 
+projects[l10n_update][subdir] = contrib
 projects[libraries][subdir] = contrib
 projects[logintoboggan][subdir] = contrib
 projects[media][subdir] = contrib
-projects[media][version] = 1.0
 projects[media_youtube][subdir] = contrib
 projects[menu_block][subdir] = contrib
 projects[node_clone][subdir] = contrib
@@ -67,9 +66,9 @@ projects[entitycache][subdir] = contrib
 ; SEO Tools
 ;;;;;;;;;
 
-projects[google_analytics][subdir] = contrib 
+projects[google_analytics][subdir] = contrib
 projects[metatag][subdir] = contrib
-projects[xmlsitemap][subdir] = contrib	
+projects[xmlsitemap][subdir] = contrib
 
 ;;;;;;;;;
 ; External dependencies
