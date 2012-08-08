@@ -47,7 +47,7 @@ projects[libraries][subdir] = contrib
 projects[logintoboggan][subdir] = contrib
 projects[media][subdir] = contrib
 projects[media_youtube][subdir] = contrib
-projects[menu_block][subdir] = contrib
+;projects[menu_block][subdir] = contrib
 projects[node_clone][subdir] = contrib
 projects[views][subdir] = contrib
 projects[views_bulk_operations][subdir] = contrib
@@ -94,6 +94,7 @@ projects[block_visibility][subdir] = contrib
 projects[simplified_menu_admin][subdir] = contrib
 projects[simplified_modules][subdir] = contrib
 projects[markup][subdir] = contrib
+
 ;;;;;;;;;
 ; Themes
 ;;;;;;;;;
