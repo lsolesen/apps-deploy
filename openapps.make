@@ -16,8 +16,8 @@ projects[field_views][subdir] = contrib
 projects[apps][subdir] = contrib
 projects[apps][version] = 1.x-dev
 projects[appserver][subdir] = contrib
-projects[fserver][subdir] = contrib
-projects[fserver][version] = 1.x-dev
+;projects[fserver][subdir] = contrib
+;projects[fserver][version] = 1.x-dev
 
 ;;;;;;;;;
 ; Path tools
@@ -55,7 +55,8 @@ projects[views_slideshow][subdir] = contrib
 projects[rules][subdir] = contrib
 projects[strongarm][subdir] = contrib
 projects[token][subdir] = contrib
-taxonomy_view_mode[subdir] = contrib
+projects[taxonomy_view_mode][subdir] = contrib
+projects[votingapi][subdir] = contrib
 
 ;;;;;;;;;
 ; Performance
