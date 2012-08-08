@@ -5,5 +5,5 @@ projects[drupal][type] = "core"
 
 projects[openapps][type] = "profile"
 projects[openapps][download][type] = "git"
-projects[openapps][download][url] = "git://github.com/lsolesen/apps-deploy.git"
+projects[openapps][download][url] = "git://github.com/discipolo/apps-deploy.git"
 projects[openapps][download][branch] = "master"
